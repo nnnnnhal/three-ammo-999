@@ -342,9 +342,9 @@ function applyForceToBody({ uuid, vec }) {
 }
 
 function applyImpulseToBody({ uuid, vec }) {
-  debugger
+  // debugger
   if (bodies[uuid]) {
-    debugger
+    // debugger
     //bodies[uuid].physicsBody.getLinearVelocity().setValue(vec.x,vec.y,vec.z);
     //console.log("trying to apply impulse to body! ammo.worker!!  " + vec.x.toString() + " " + vec.y.toString() + " " + vec.z.toString());// + val.toString() );
     //let impulseVec = new THREE.Vector3(0,50,0);
