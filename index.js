@@ -163,6 +163,13 @@ export const WorkerHelpers = function(ammoWorker) {
       vec
     });
   };
+  
+  const getLinearVelocity = function(uuid) {
+    ammoWorker.postMessage({
+      type: MESSAGE_TYPES.GET_LINEAR_VELOCITY,
+      uuid
+    });
+  };
 
   // Stop paste
 
@@ -184,7 +191,8 @@ export const WorkerHelpers = function(ammoWorker) {
     applyForceToBody,
     applyImpulseToBody,
     setLinearVelocity,
-    setAngularVelocity
+    setAngularVelocity,
+    getLinearVelocity
     
   };
 };

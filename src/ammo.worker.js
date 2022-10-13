@@ -149,6 +149,10 @@ const tick = () => {
           break;
         case MESSAGE_TYPES.SET_ANGULAR_VELOCITY:
           setAngularVelocity(message);
+          break;
+        case MESSAGE_TYPES.GET_LINEAR_VELOCITY:
+          getLinearVelocity(message);
+          break;
         // stop paste
         
         default:
@@ -370,7 +374,7 @@ function setAngularVelocity({ uuid, vec }) {
   }
 }
 
-function getLinearVelocity({ uuid}) {
+function getLinearVelocity({ uuid }) {
   if (bodies[uuid]) {
     console.log("getLinearVelocity", bodies[uuid].physicsBody.getLinearVelocity());
     return bodies[uuid].physicsBody.getLinearVelocity();
