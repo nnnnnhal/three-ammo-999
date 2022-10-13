@@ -142,15 +142,18 @@ const tick = () => {
           applyForceToBody(message);
           break;
         case MESSAGE_TYPES.APPLY_IMPULSE:
+          console.log("APPLY_IMPULSE");
           applyImpulseToBody(message);
           break;
         case MESSAGE_TYPES.SET_LINEAR_VELOCITY:
+          console.log("SET_LINEAR_VELOCITY");
           setLinearVelocity(message);
           break;
         case MESSAGE_TYPES.SET_ANGULAR_VELOCITY:
           setAngularVelocity(message);
           break;
         case MESSAGE_TYPES.GET_LINEAR_VELOCITY:
+          console.log("GET_LINEAR_VELOCITY");
           getLinearVelocity(message);
           break;
         // stop paste
@@ -342,6 +345,7 @@ function applyForceToBody({ uuid, vec }) {
     //tbv30.setValue(x_var,1000,z_var);
     //let btVec = new Ammo.btVector3(0, 0, 0);
     bodies[uuid].physicsBody.applyForce(vec);
+    bodies[uuid].physicsBody.activate();
   }
 }
 
@@ -357,12 +361,14 @@ function applyImpulseToBody({ uuid, vec }) {
     //tbv30.setValue(x_var,1000,z_var);
     //bodies[uuid].physicsBody.applyImpulse(impulseVec,posVec);//impulseVec
     bodies[uuid].physicsBody.applyCentralImpulse(vec);
+    bodies[uuid].physicsBody.activate();
   }
 }
 
 function setLinearVelocity({ uuid, vec }) {
   if (bodies[uuid]) {
     bodies[uuid].physicsBody.getLinearVelocity().setValue(vec.x,vec.y,vec.z);
+    bodies[uuid].physicsBody.activate();
     //console.log("setting linear velocity on ammo.worker!" + vec.x.toString() + " " + vec.y.toString() + " " + vec.z.toString());// + val.toString() );
   }
 }
@@ -370,13 +376,14 @@ function setLinearVelocity({ uuid, vec }) {
 function setAngularVelocity({ uuid, vec }) {
   if (bodies[uuid]) {
     bodies[uuid].physicsBody.getAngularVelocity().setValue(vec.x,vec.y,vec.z);
+    bodies[uuid].physicsBody.activate();
     //console.log("setting angular velocity on ammo.worker!  " + vec.x.toString() + " " + vec.y.toString() + " " + vec.z.toString());// + val.toString() );
   }
 }
 
 function getLinearVelocity({ uuid }) {
   if (bodies[uuid]) {
-    console.log("getLinearVelocity", bodies[uuid].physicsBody.getLinearVelocity());
+    console.log("getLinearVelocity", bodies[uuid].physicsBody.getLinearVelocity().toString());
     return bodies[uuid].physicsBody.getLinearVelocity();
     //console.log("setting linear velocity on ammo.worker!" + vec.x.toString() + " " + vec.y.toString() + " " + vec.z.toString());// + val.toString() );
   }
