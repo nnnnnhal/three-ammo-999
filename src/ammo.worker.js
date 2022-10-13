@@ -344,14 +344,15 @@ function applyForceToBody({ uuid, vec }) {
     //let tbv30 = new THREE.Vector3(x_var,1000,z_var);
     //tbv30.setValue(x_var,1000,z_var);
     //let btVec = new Ammo.btVector3(0, 0, 0);
-    bodies[uuid].physicsBody.applyForce(vec);
     bodies[uuid].physicsBody.activate();
+    bodies[uuid].physicsBody.applyForce(vec);
   }
 }
 
 function applyImpulseToBody({ uuid, vec }) {
   // debugger
   if (bodies[uuid]) {
+    console.log("of applyImpulseToBody");
     // debugger
     //bodies[uuid].physicsBody.getLinearVelocity().setValue(vec.x,vec.y,vec.z);
     //console.log("trying to apply impulse to body! ammo.worker!!  " + vec.x.toString() + " " + vec.y.toString() + " " + vec.z.toString());// + val.toString() );

@@ -141,6 +141,7 @@ export const WorkerHelpers = function(ammoWorker) {
   };
 
   const applyImpulseToBody = function(uuid,vec) {
+    console.log("IN applyImpulseToBody");
     ammoWorker.postMessage({
       type: MESSAGE_TYPES.APPLY_IMPULSE,
       uuid,
