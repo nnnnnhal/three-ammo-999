@@ -370,6 +370,16 @@ function setAngularVelocity({ uuid, vec }) {
   }
 }
 
+function getLinearVelocity({ uuid}) {
+  if (bodies[uuid]) {
+    console.log("getLinearVelocity", bodies[uuid].physicsBody.getLinearVelocity());
+    return bodies[uuid].physicsBody.getLinearVelocity();
+    //console.log("setting linear velocity on ammo.worker!" + vec.x.toString() + " " + vec.y.toString() + " " + vec.z.toString());// + val.toString() );
+  }
+}
+
+
+
 // stop paste
 
 onmessage = async event => {
