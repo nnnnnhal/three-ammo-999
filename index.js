@@ -7,7 +7,19 @@ export const AmmoWorker = ammoWorker;
 import { iterateGeometries } from "three-to-ammo";
 const MESSAGE_TYPES = CONSTANTS.MESSAGE_TYPES;
 
+import Ammo from "ammo.js/builds/ammo.wasm.js";
+
+
+
+
 export const WorkerHelpers = function(ammoWorker) {
+  
+  // SUPER not sure about this pattern 
+  Ammo().then(function(Ammo) {
+    this.Ammo = Ammo;
+  });
+  
+  
   const transform = new THREE.Matrix4();
   const inverse = new THREE.Matrix4();
 
